@@ -11,7 +11,7 @@ class Latveria {
     public:
         Latveria (int b) {
             doombots = b;
-            cout << "Doombots are online!" << endl;
+            cout << "Doom's army of " << doombots << " Doombots is ready! " << endl;
             cout << "Kneel before DOOM! " << endl;
         }
 };
