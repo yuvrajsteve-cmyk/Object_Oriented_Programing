@@ -40,6 +40,11 @@ int main () {
     cout << "Const is: " << myNumber << " and size of const is: " << sizeof(myNumber) << endl;
     cout << "=====================" << endl;
 
+    // boolean data type 
+    bool wrong = false;
+    cout << "Bool is: " << wrong << " and size of bool is: " << sizeof(wrong) << endl;
+    cout << "=====================" << endl;
+
 
     return 0;
 }
