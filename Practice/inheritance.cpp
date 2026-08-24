@@ -3,42 +3,28 @@
 #include <iostream>
 using namespace std;
 
-
 class Animal {
     public:
-        bool alive = true;
-    void eat() {
-        cout << "This animal is eating\n";
-        cout << "My animal name is Bruno\n";
-    }        
+        void eat() {
+            cout << "I can eat!" << endl;
+        }
 };
 
-class Dog : public Animal{
+class Dog : public Animal {
     public:
-
-    void bark() {
-        cout << "The dog goes woof!\n";
-    }
-
+        void dog() {
+            cout << "I can bark! woof! woof!" << endl;
+        }
 };
 
-class Cat : public Animal {
-    public:
-
-    void meow () {
-        cout << "The cat goes meow!\n";
-    }
-};
 
 int main () {
 
-    Dog dog;
-    Cat cat;
+    Dog myDog;
 
-    cout << dog.alive << '\n';
-    dog.eat();
-    dog.bark();
-    cat.meow();
- 
+    myDog.eat();
+    myDog.dog();
+
+
     return 0;
 }
