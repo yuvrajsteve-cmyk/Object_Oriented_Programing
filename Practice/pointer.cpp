@@ -5,22 +5,27 @@
 #include <iostream>
 using namespace std;
 
+
+struct Car {
+    int speed;
+};
+
+int operator+(Car A, int bonus ) {
+    return A.speed + bonus;
+}
+
 int main () {
-    int houseNumber = 100;
 
-    int *gps = &houseNumber;
+        Car myCar;
+        myCar.speed = 100;
 
-    cout << houseNumber << endl;
-    cout << "===============" << endl;
+        Car *carPtr = &myCar;
+        
+        int finalSpeed = (*carPtr) + 50;
 
-    cout << gps << endl;
-    cout << "===============" << endl;
-
-    cout << *gps << endl;
-    cout << "===============" << endl;
-
-
-
+        cout << finalSpeed << endl;
+        
+        
 
     return 0;
 }
