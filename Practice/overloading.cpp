@@ -10,7 +10,7 @@ struct Ingredient {
 
 int operator+(Ingredient A, Ingredient B) {
     return A.calories + B.calories;
-};
+}
 
 
 
