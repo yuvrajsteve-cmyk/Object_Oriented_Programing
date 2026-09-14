@@ -26,9 +26,17 @@ int main() {
 
     Employee employee2;
     employee2.Name = "Satinderpal Singh";
-    employee2.Company = "Satinder Mec:";
+    employee2.Company = "Satinder Mec";
     employee2.Age = 24;
     employee2.introduceYourSelf();
+
+    cout << "==================================" << endl;
+
+    Employee employee3;
+    employee3.Name = "Jasspreet  Singh";
+    employee3.Company = "Jass Solutions";
+    employee3.Age = 24;
+    employee3.introduceYourSelf();
     
 
     return 0;
