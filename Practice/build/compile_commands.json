@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/wwwyu/OneDrive/Documents/B-TECH/Practical_Tasks/C++/Practice/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\Project.dir\\main.cpp.obj -c C:\\Users\\wwwyu\\OneDrive\\Documents\\B-TECH\\Practical_Tasks\\C++\\Practice\\main.cpp",
+  "file": "C:/Users/wwwyu/OneDrive/Documents/B-TECH/Practical_Tasks/C++/Practice/main.cpp",
+  "output": "CMakeFiles/Project.dir/main.cpp.obj"
+}
+]

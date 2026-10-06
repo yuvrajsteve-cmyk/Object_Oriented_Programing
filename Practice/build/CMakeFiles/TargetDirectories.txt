@@ -1,0 +1,3 @@
+C:/Users/wwwyu/OneDrive/Documents/B-TECH/Practical_Tasks/C++/Practice/build/CMakeFiles/Project.dir
+C:/Users/wwwyu/OneDrive/Documents/B-TECH/Practical_Tasks/C++/Practice/build/CMakeFiles/edit_cache.dir
+C:/Users/wwwyu/OneDrive/Documents/B-TECH/Practical_Tasks/C++/Practice/build/CMakeFiles/rebuild_cache.dir
