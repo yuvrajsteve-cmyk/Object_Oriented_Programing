@@ -196,5 +196,4 @@ CMakeFiles/Project.dir/main.cpp.obj: \
   C:/msys64/ucrt64/include/c++/16.2.0/bits/ostream_print.h \
   C:/msys64/ucrt64/include/c++/16.2.0/bits/ostream.tcc \
   C:/msys64/ucrt64/include/c++/16.2.0/istream \
-  C:/msys64/ucrt64/include/c++/16.2.0/bits/istream.tcc \
-  C:/msys64/ucrt64/include/c++/16.2.0/expected
+  C:/msys64/ucrt64/include/c++/16.2.0/bits/istream.tcc
