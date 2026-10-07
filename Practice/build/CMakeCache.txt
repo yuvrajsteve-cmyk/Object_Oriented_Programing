@@ -31,15 +31,16 @@ CMAKE_COLOR_MAKEFILE:BOOL=ON
 //Full path to the compiler used for language <LANG>. Set by CMake
 // during compiler detection on the first configure; users may
 // override on the command line to select a specific toolchain.
-CMAKE_CXX_COMPILER:FILEPATH=C:/msys64/ucrt64/bin/g++.exe
+CMAKE_CXX_COMPILER:FILEPATH=C:/msys64/ucrt64/bin/clang++.exe
 
-//A wrapper around 'ar' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_CXX_COMPILER_AR:FILEPATH=C:/msys64/ucrt64/bin/gcc-ar.exe
+//LLVM archiver
+CMAKE_CXX_COMPILER_AR:FILEPATH=CMAKE_CXX_COMPILER_AR-NOTFOUND
 
-//A wrapper around 'ranlib' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_CXX_COMPILER_RANLIB:FILEPATH=C:/msys64/ucrt64/bin/gcc-ranlib.exe
+//`clang-scan-deps` dependency scanner
+CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS:FILEPATH=C:/msys64/ucrt64/bin/clang-scan-deps.exe
+
+//Generate index for LLVM archive
+CMAKE_CXX_COMPILER_RANLIB:FILEPATH=CMAKE_CXX_COMPILER_RANLIB-NOTFOUND
 
 //Flags used by the CXX compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=
@@ -62,15 +63,16 @@ CMAKE_CXX_STANDARD_LIBRARIES:STRING=-lkernel32 -luser32 -lgdi32 -lwinspool -lshe
 //Full path to the compiler used for language <LANG>. Set by CMake
 // during compiler detection on the first configure; users may
 // override on the command line to select a specific toolchain.
-CMAKE_C_COMPILER:FILEPATH=C:/msys64/ucrt64/bin/gcc.exe
+CMAKE_C_COMPILER:FILEPATH=C:/msys64/ucrt64/bin/clang.exe
 
-//A wrapper around 'ar' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_C_COMPILER_AR:FILEPATH=C:/msys64/ucrt64/bin/gcc-ar.exe
+//LLVM archiver
+CMAKE_C_COMPILER_AR:FILEPATH=CMAKE_C_COMPILER_AR-NOTFOUND
 
-//A wrapper around 'ranlib' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_C_COMPILER_RANLIB:FILEPATH=C:/msys64/ucrt64/bin/gcc-ranlib.exe
+//`clang-scan-deps` dependency scanner
+CMAKE_C_COMPILER_CLANG_SCAN_DEPS:FILEPATH=C:/msys64/ucrt64/bin/clang-scan-deps.exe
+
+//Generate index for LLVM archive
+CMAKE_C_COMPILER_RANLIB:FILEPATH=CMAKE_C_COMPILER_RANLIB-NOTFOUND
 
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=
@@ -293,6 +295,8 @@ CMAKE_CTEST_COMMAND:INTERNAL=C:/Program Files/CMake/bin/ctest.exe
 CMAKE_CXX_COMPILER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_COMPILER_AR
 CMAKE_CXX_COMPILER_AR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS
+CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_COMPILER_RANLIB
 CMAKE_CXX_COMPILER_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS
@@ -311,6 +315,8 @@ CMAKE_CXX_STANDARD_LIBRARIES-ADVANCED:INTERNAL=1
 CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER_AR
 CMAKE_C_COMPILER_AR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_COMPILER_CLANG_SCAN_DEPS
+CMAKE_C_COMPILER_CLANG_SCAN_DEPS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER_RANLIB
 CMAKE_C_COMPILER_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS
