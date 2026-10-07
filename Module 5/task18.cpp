@@ -1,3 +1,5 @@
+// Task 18: Write a program to demonstrate the reading and writing of mixed type of data. 
+
 #include <iostream>
 #include <fstream>
 #include <string>
