@@ -1,38 +1,26 @@
 #include <iostream>
-
-void atmTransaction(int choice) {
-    if (choice == 1) {
-        throw 404;
-    }
-    if (choice == 2) {
-        throw "Server is down!";
-    }
-    if (choice == 3) {
-        throw 9.99f;
-    }
-    if (choice > 3) {
-        throw "Invalid Choice ";
-    }
-}
+#include <fstream>
+#include <string>
 
 int main () {
-    int userChoice;
-    std::cout << "Enter Your choice: ";
-    std::cin >> userChoice ;
+    std::ifstream in("../CMakeLists.txt");
 
-    try{
-        atmTransaction(userChoice);
+    if(!in) {
+        std::cout << "File not found! ";
+        return 1;
     }
 
-    catch (int code) {
-        std::cout << "Catch 1: Found error number: " << code << std::endl;
+    std::string line;
+
+    std::cout << "=== Data found in the file ===\n\n";
+
+    while(std::getline(in, line)) {
+        std::cout << line << std::endl;
     }
-    catch (const char* message) {
-        std::cout << "Catch 2: Message found: " << message << std::endl;
-    }
-    catch (...) {
-        std::cout << "Cathc 3: Found an unmached Mistake " << std::endl;
-    }
+
+    std::cout << "\n ==================== \n";
+
+    in.close();
 
     return 0;
-} 
+}
