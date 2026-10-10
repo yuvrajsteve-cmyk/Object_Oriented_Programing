@@ -1,26 +1,33 @@
 #include <iostream>
-#include <fstream>
-#include <string>
 
+class TonyStarkLab {
+    public:
+        TonyStarkLab() {
+            std::cout << "JARVIS: Security Shield Activte " << std::endl;
+        }
+
+        ~TonyStarkLab() {
+            std::cout << "JARVIS: Memory Cleared! " << std::endl;
+        }
+};
+
+void runLabSystem_C_Style(TonyStarkLab system) {
+    std::cout << "Lab system is running......" << std::endl;
+}
+
+void runLabSystem_CPP_Style(const TonyStarkLab& system) {
+    std::cout << "Lab system is running Efficently ......" << std::endl;
+} 
 int main () {
-    std::ifstream in("../CMakeLists.txt");
 
-    if(!in) {
-        std::cout << "File not found! ";
-        return 1;
-    }
+    TonyStarkLab tony;
+    std::cout << "============================ " << std::endl;
+    runLabSystem_C_Style(tony);
 
-    std::string line;
+    std::cout << "Calling cpp style.........." << std::endl;
+    runLabSystem_CPP_Style(tony);
 
-    std::cout << "=== Data found in the file ===\n\n";
-
-    while(std::getline(in, line)) {
-        std::cout << line << std::endl;
-    }
-
-    std::cout << "\n ==================== \n";
-
-    in.close();
 
     return 0;
+    
 }
