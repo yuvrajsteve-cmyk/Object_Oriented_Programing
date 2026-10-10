@@ -1,33 +1,25 @@
 #include <iostream>
 
-class TonyStarkLab {
-    public:
-        TonyStarkLab() {
-            std::cout << "JARVIS: Security Shield Activte " << std::endl;
-        }
 
-        ~TonyStarkLab() {
-            std::cout << "JARVIS: Memory Cleared! " << std::endl;
-        }
-};
-
-void runLabSystem_C_Style(TonyStarkLab system) {
-    std::cout << "Lab system is running......" << std::endl;
-}
-
-void runLabSystem_CPP_Style(const TonyStarkLab& system) {
-    std::cout << "Lab system is running Efficently ......" << std::endl;
-} 
 int main () {
 
-    TonyStarkLab tony;
-    std::cout << "============================ " << std::endl;
-    runLabSystem_C_Style(tony);
+    int arr[7] = {10, 20, 30, 40, 50, 60};
+    int size = 6;
+    int element = 70;
 
-    std::cout << "Calling cpp style.........." << std::endl;
-    runLabSystem_CPP_Style(tony);
+    arr[size] = element;
+    size++;
+    for(int i = 0; i < size; i++) {
+        std::cout << "Array is: " << arr[i] << std::endl;
+    }
+
+   
+
+    
+
+
+  
 
 
     return 0;
-    
 }
