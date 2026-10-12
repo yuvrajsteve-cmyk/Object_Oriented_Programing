@@ -1,33 +1,55 @@
 #include <iostream>
 
+class Queue {
+    int arr[5];
+    int front;
+    int rear;
 
-int main () {
+    public:
+        Queue() {
+            front = -1;
+            rear = -1;
+        }
 
-    int arr[7] = {12, 34, 45, 56, 75, 88};
-    int size = 6;
-    int element = 100;
-
-    arr[size] = element;
-    size++;
-
-    for (int i = 0; i < size; i++) {
-        if (arr[i] == 45){
-            for (int j = i; j < size - 1; j++) {
-                arr[j] = arr[j + 1];
+        void enqueue (int value) {
+            if (rear == 4) {
+                std::cout << "Queue is full" << std::endl;
+                return;
             }
-            size--;
-            break;
-            
+            if (front == -1) {
+                front = 0;
+            }
+
+            rear++;
+            arr[rear] = value;
+            std::cout << value << " added to queue " << std::endl;
+        }
+
+        void dequeue() {
+            if (front == -1 || front > rear) {
+                std::cout << "Queue is empty! Nothing to remove. " << std::endl;
+                return;
+            }
+
+            std::cout << arr[front] << " removed from queue " << std::endl;
+            front++;
         }
         
-        
-    }
-    for (int k = 0; k < size; k++) {
-        std::cout << "Array is: " << arr[k] << std::endl;
-    }
+};
 
-    
-   
+
+int main () {
+    Queue q1;
+    q1.enqueue(1);
+    q1.enqueue(2);
+    q1.enqueue(3);
+    q1.enqueue(4);
+    q1.enqueue(5);
+
+    std::cout << "=====================" << std::endl;
+
+    q1.dequeue();
+    q1.dequeue();
 
 
     return 0;
