@@ -1,29 +1,28 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
-#include <vector>
-
+#include <map>
+#include <random>
 
 int main () {
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
+  std::normal_distribution<double> d(0.0, 1.0);
 
-  std::vector<float> sAges = {21, 23, 21, 22, 24, 20, 24, 26, 25};
-  float total = 0;
+  std::map<int, int> histogram;
+  const int total_samples = 10000;
 
-  for (int i = 0; i < sAges.size(); i++) {
-    total += sAges[i];
+  for (int n = 0; n < total_samples; ++n) {
+    int bin = std::round(d(gen));
+    histogram[bin]++;
   }
- 
-  float mean = total / sAges.size();
-  float mid = (sAges.size() / 2);
-  float median = sAges[mid];
 
-  std::sort(sAges.begin(), sAges.end());
-
-
-  std::cout << "This is average: " << total << " and this is mean: " << mean << " and median is: " << median << std::endl;
-
-
-
+  std::cout << "Normal Distribution Histogram (" << total_samples << " samples): \n\n";
+  for (auto p : histogram) {
+    std::cout << std::setw(2) << p.first << " : "
+          << std::string(p.second / 100, '*') << "\n";
+  }
 
   return 0;
 }
