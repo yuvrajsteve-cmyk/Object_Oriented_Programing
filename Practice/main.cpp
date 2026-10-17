@@ -1,31 +1,29 @@
 #include <iostream>
 #include <string>
-#include <format>
+#include <vector>
 
 
-class Student {
-  public:
-    std::string name;
-    int age;
-    int rollNo;
+int main () {
 
-  void display () {
-    std::string reslt = std::format("Hello, {} . Your {} years old and this is your {} roll number" , name, age, rollNo);
-    std::cout << reslt << std::endl;
+
+  std::vector<float> sAges = {21, 23, 21, 22, 24, 20, 24, 26, 25};
+  float total = 0;
+
+  for (int i = 0; i < sAges.size(); i++) {
+    total += sAges[i];
   }
-};
+ 
+  float mean = total / sAges.size();
+  float mid = (sAges.size() / 2);
+  float median = sAges[mid];
 
-int main()
-{
+  std::sort(sAges.begin(), sAges.end());
 
-  Student s;
-  s.age = 25;
-  s.name = "Yuvraj Singh";
-  s.rollNo = 3775;
 
-  
+  std::cout << "This is average: " << total << " and this is mean: " << mean << " and median is: " << median << std::endl;
 
-  s.display();
+
+
 
   return 0;
 }
