@@ -1,28 +1,36 @@
 #include <iostream>
-#include <iomanip>
-#include <string>
-#include <map>
-#include <random>
+#include <cmath>
+
 
 int main () {
-  std::random_device rd;
-  std::mt19937 gen(rd());
+  int x[] = {0, 1, 2, 3, 4, 5, 6, 7, 8,};
+  int f[] = {1, 8, 28, 56, 70, 56, 28, 8, 1};
+  int n = 9;
+  double N = 0;
+  double sum_fx = 0;
 
-  std::normal_distribution<double> d(0.0, 1.0);
-
-  std::map<int, int> histogram;
-  const int total_samples = 10000;
-
-  for (int n = 0; n < total_samples; ++n) {
-    int bin = std::round(d(gen));
-    histogram[bin]++;
+  for (int i = 0; i < n; i++)  {
+    N = N + f[i];
+    sum_fx = sum_fx + (f[i] * x[i]);
   }
 
-  std::cout << "Normal Distribution Histogram (" << total_samples << " samples): \n\n";
-  for (auto p : histogram) {
-    std::cout << std::setw(2) << p.first << " : "
-          << std::string(p.second / 100, '*') << "\n";
+  double mean = sum_fx / N;
+
+  double sum_fd1 = 0, sum_fd2 = 0, sum_fd3 = 0, sum_fd4 = 0;
+
+  for (int i = 0; i < n; i++) {
+    double d = x[i] - mean;
+
+    sum_fd1 = sum_fd1 + (f[i] * pow(d, 1));
+    sum_fd2 = sum_fd2 + (f[i] * pow(d, 2));
+    sum_fd3 = sum_fd3 + (f[i] * pow(d, 3));
+    sum_fd4 = sum_fd4 + (f[i] * pow(d, 4));
   }
+
+  std::cout << "1st Moment = " << (sum_fd1 / N) << std::endl;
+  std::cout << "2nd Moment = " << (sum_fd2 / N) << std::endl;
+  std::cout << "3rd Moment = " << (sum_fd3 / N) << std::endl;
+  std::cout << "4th Moment = " << (sum_fd4 / N) << std::endl;
 
   return 0;
 }
