@@ -5,9 +5,13 @@ int main () {
 
   const char *name = "Yuvraj Singh";
   int number = 8;
-  int* ptr = &number;
+  int& ptr = number;
+  ptr = 10;
   std::string brother = "Satinderpal";
   bool isOnline = true;
+
+  std::string& myBrother = brother;
+  myBrother = "Jasspreet singh"; 
 
 
 
