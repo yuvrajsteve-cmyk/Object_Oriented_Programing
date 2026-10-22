@@ -1,38 +1,19 @@
 #include <iostream>
 #include <string>
 
-
-
-
 int main () {
 
+  const char *name = "Yuvraj Singh";
+  int number = 8;
+  int* ptr = &number;
+  std::string brother = "Satinderpal";
+  bool isOnline = true;
 
 
-  enum { arr = 9};
-  std::string myArr[arr] = {"Yuvraj Singh", "Satinderpal Singh", "Inderjit Singh", "Karamjit Kaur", "Jasspreet Kaur"};
+
+  std::cout << name << "\n";
+  std::cout << ptr << " and Number is: "<< number << "\n";
+  std::cout << &brother << " and string is: " << brother << "\n";
+  std::cout << &isOnline << " and bool is: " << isOnline << "\n";
   
-  std::string newName;
-  std::cout << "Enter a name to add: ";
-  std::getline(std::cin, newName);
-
-  myArr[5] = newName;
-  myArr[6] = "Param";
-  myArr[7] = "Jassi";
-  myArr[8] = "Harpal";
-
-
-  for (int i = 0; i < arr; i++) {
-    std::cout << "List: " << myArr[i] << "\n";
-  }
-
- 
-
-  
-
-
-
-
-  
-
-  return 0;
 }
