@@ -1,32 +1,37 @@
 #include <iostream>
+#include <string>
 
-
-class GamePlayer {
-  private:
-    enum { ArraySize = 5};
-
-  public:
-    int scores[ArraySize];
-
-    void display() {
-      scores[0] = 10;
-      scores[1] = 20;
-      scores[2] = 30;
-      scores[3] = 40;
-      scores[4] = 50;
-
-      for (int i = 0; i < ArraySize; i++) {
-        std::cout << "Score " << i << " is: " << scores[i] << std::endl;
-      }
-    }
-};
 
 
 
 int main () {
 
-  GamePlayer g;
-  g.display();
+
+
+  enum { arr = 9};
+  std::string myArr[arr] = {"Yuvraj Singh", "Satinderpal Singh", "Inderjit Singh", "Karamjit Kaur", "Jasspreet Kaur"};
+  
+  std::string newName;
+  std::cout << "Enter a name to add: ";
+  std::getline(std::cin, newName);
+
+  myArr[5] = newName;
+  myArr[6] = "Param";
+  myArr[7] = "Jassi";
+  myArr[8] = "Harpal";
+
+
+  for (int i = 0; i < arr; i++) {
+    std::cout << "List: " << myArr[i] << "\n";
+  }
+
+ 
+
+  
+
+
+
+
   
 
   return 0;
