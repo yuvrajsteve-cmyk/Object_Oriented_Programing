@@ -1,20 +1,39 @@
-#include <stack>
 #include <iostream>
 
-std::stack<int> myStack;
+class Entity
+{
+public:
+  float X, Y;
+
+  void Move(float xa, float ya)
+  {
+    X += xa;
+    Y += ya;
+  }
+};
+
+class Player : public Entity
+{
+public:
+  const char *Name;
+  
+  void PrintName ()
+  {
+    std::cout << Name << "\n";
+  }
+};
 
 int main()
 {
+  std::cout << sizeof(Entity) << std::endl;
+  std::cout << sizeof(Player) << std::endl;
 
-  myStack.push(3);
-  myStack.push(6);
+  Player player;
+  player.Move(5, 5);
+  player.X = 2;
+  player.Name = "Yuvraj Singh";
+  player.PrintName();
 
-  std::cout << myStack.top() << " and size is: " << myStack.size() << "\n";
-  std::cout << "My stack is empty: " << myStack.empty() << "\n";
 
-for (int i = 0; i < myStack.size(); i++) {
-  std::cout << "The stack is: " << myStack.size() << " and top " << myStack.top() << "\n";
-}
-
-  return 0;
+  return EXIT_SUCCESS;
 }
