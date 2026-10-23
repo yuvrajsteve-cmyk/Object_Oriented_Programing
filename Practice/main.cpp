@@ -3,37 +3,83 @@
 class Entity
 {
 public:
-  float X, Y;
+  const char *name;
 
-  void Move(float xa, float ya)
+  void printName()
   {
-    X += xa;
-    Y += ya;
+    std::cout << name << "\n";
   }
 };
 
-class Player : public Entity
+class Entity2 : public Entity
 {
 public:
-  const char *Name;
-  
-  void PrintName ()
+  const char *stduent;
+
+  void printStudent()
   {
-    std::cout << Name << "\n";
+    std::cout << stduent << "\n";
+  }
+};
+
+class Student : public Entity2
+{
+public:
+  const char *stream;
+
+  void printStream()
+  {
+    std::cout << stream << "\n";
+  }
+};
+
+class Teacher : public Student
+{
+public:
+  const char *teacherName;
+
+  void printTeacher()
+  {
+    std::cout << teacherName << std::endl;
   }
 };
 
 int main()
 {
-  std::cout << sizeof(Entity) << std::endl;
-  std::cout << sizeof(Player) << std::endl;
 
-  Player player;
-  player.Move(5, 5);
-  player.X = 2;
-  player.Name = "Yuvraj Singh";
-  player.PrintName();
+  Entity entity;
+  entity.name = "Yuvraj Singh";
+  entity.printName();
 
+  std::cout << "==============================================" "\n";
 
-  return EXIT_SUCCESS;
+  Entity2 entity2;
+  entity2.name = "Satinderpal Singh";
+  entity2.printName();
+  entity2.stduent = "Yes";
+  entity2.printStudent();
+
+  std::cout << "==============================================" "\n";
+
+  Student student;
+  student.name = "Jaskarn Singh";
+  student.printName();
+  student.stduent = "yes";
+  student.printStudent();
+  student.stream = "CSE";
+  student.printStream();
+
+  std::cout << "==============================================" "\n";
+
+  Teacher teacher;
+  teacher.name = "The Cherno";
+  teacher.printName();
+  teacher.stduent = "No";
+  teacher.printStudent();
+  teacher.stream = "C++";
+  teacher.printStream();
+  teacher.teacherName = "Master";
+  teacher.printTeacher();
+
+  return 0;
 }
