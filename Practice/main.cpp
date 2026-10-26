@@ -85,5 +85,17 @@ int main()
   ArrayStack<std::string> myString(10);
   myString.push("Satinderpal Singh");
   std::cout << "Top element is: " << myString.top() << "\n";
+
+  std::cout <<"=====================================" "\n";
+
+  ArrayStack<float> myFloat(10);
+  myFloat.push(10.23);
+  std::cout << "Top element is: " << myFloat.top() << "\n";
+
+  std::cout <<"=====================================" "\n";
+
+  ArrayStack<bool> myBool(10);
+  myBool.push(false);
+  std::cout << "Top element is: " << myBool.top() << "\n";
   return 0;
 }
