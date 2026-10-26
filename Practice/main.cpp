@@ -1,85 +1,32 @@
 #include <iostream>
+#include <string>
+#include <map>
 
-class Entity
+template <typename T>
+class Box
 {
-public:
-  const char *name;
+private:
+  T data;
 
-  void printName()
+public:
+  Box(T d) : data(d)
   {
-    std::cout << name << "\n";
+  }
+  T getData()
+  {
+    return data;
   }
 };
-
-class Entity2 : public Entity
-{
-public:
-  const char *stduent;
-
-  void printStudent()
-  {
-    std::cout << stduent << "\n";
-  }
-};
-
-class Student : public Entity2
-{
-public:
-  const char *stream;
-
-  void printStream()
-  {
-    std::cout << stream << "\n";
-  }
-};
-
-class Teacher : public Student
-{
-public:
-  const char *teacherName;
-
-  void printTeacher()
-  {
-    std::cout << teacherName << std::endl;
-  }
-};
-
 int main()
 {
+  
+  Box<int> intBox(230);
+  Box<std::string> nameBox("yuvraj");
 
-  Entity entity;
-  entity.name = "Yuvraj Singh";
-  entity.printName();
+  std::cout << "Hello!" << std::endl;
 
-  std::cout << "==============================================" "\n";
-
-  Entity2 entity2;
-  entity2.name = "Satinderpal Singh";
-  entity2.printName();
-  entity2.stduent = "Yes";
-  entity2.printStudent();
-
-  std::cout << "==============================================" "\n";
-
-  Student student;
-  student.name = "Jaskarn Singh";
-  student.printName();
-  student.stduent = "yes";
-  student.printStudent();
-  student.stream = "CSE";
-  student.printStream();
-
-  std::cout << "==============================================" "\n";
-
-  Teacher teacher;
-  teacher.name = "The Cherno";
-  teacher.printName();
-  teacher.stduent = "No";
-  teacher.printStudent();
-  teacher.stream = "C++";
-  teacher.printStream();
-  teacher.teacherName = "Master";
-  teacher.printTeacher();
+  std::cout << "Int Box Data: " << intBox.getData() << std::endl;
+  std::cout << "Name Box Data: " << nameBox.getData() << std::endl;
 
   return 0;
 }
