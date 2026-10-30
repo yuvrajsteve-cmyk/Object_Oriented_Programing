@@ -1,80 +1,17 @@
 #include <iostream>
 #include <string>
+#include <stack>
 
-template <typename E>
-class ArrayStack
-{
-    enum
-    {
-        DEF_CAPACITY = 100
-    };
-
-public:
-    ArrayStack(int cap = DEF_CAPACITY);
-    int size() const;
-    bool empty() const;
-    const E &top() const;
-    void push(const E &e);
-    void pop();
-
-private:
-    E *S;
-    int capacity;
-    int t;
-};
-
-template <typename E>
-ArrayStack<E>::ArrayStack(int cap) : S(new E[cap]), capacity(cap), t(-1) {}
-template <typename E>
-int ArrayStack<E>::size() const { return (t + 1); }
-template <typename E>
-bool ArrayStack<E>::empty() const { return (t < 0); }
-template <typename E>
-const E &ArrayStack<E>::top() const
-{
-    if (empty())
-        ;
-    return S[t];
-}
-
-template <typename E>
-void ArrayStack<E>::push(const E &e)
-{
-    if (size() == capacity)
-        ;
-    S[++t] = e;
-}
-
-template <typename E>
-void ArrayStack<E>::pop()
-{
-    if (empty())
-        ;
-    --t;
-}
+/*Another Fundamental data structure is the queue, which is the close relative of the
+stack. A queue is a container of elements that are inserted and removed according to
+the first-in-first-out principle. Elements can be inserted in a queue at any time, but,
+only the element that has been in the queue the longest can be removed at any time. We usually say
+that elements enter the queue at the rear and the removed from the front. The metaphor for
+this terminology is a line of people wating to get on an amusement park ride. People enter at the
+rear of the line and get on the ride form the front of the line.*/
 
 int main()
 {
-    ArrayStack<int> A;
-    A.push(12);
-    A.push(20);
 
-    ArrayStack<std::string> name;
-    name.push("Satinder");
-    name.push("yuvraj");
-    name.push("lovepreet");
-
-    ArrayStack<bool> yes;
-    yes.push(1);
-    yes.push(0);
-
-    ArrayStack<char> a;
-    a.push('A');
-
-
-    std::cout << A.top() << std::endl;
-    std::cout << name.top() << "\n";
-    std::cout << yes.top() << "\n";
-    std::cout << a.top() << "\n";
     return 0;
 }
