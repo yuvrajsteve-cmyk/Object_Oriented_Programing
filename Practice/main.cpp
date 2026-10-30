@@ -1,26 +1,27 @@
 #include <iostream>
 #include <string>
-class Animal
+
+struct Entity
 {
-public:
-    virtual void sound() { std::cout << "Animal\n"; }
+    static int x, y;
+
+    static void print()
+    {
+        std::cout << x << ", " << y << std::endl;
+    }
 };
 
-class Dog : public Animal
-{
-    public:
-        void sound() { std::cout << "Bark: woof woof\n"; }
-};
-
+int Entity::x;
+int Entity::y;
 int main()
 {
-    Animal *a;
-    Dog d;
-    a = &d;
-    a->sound();
+    Entity::x = 7;
+    Entity::y = 8;
 
-    std::cout << sizeof(a) << std::endl;
-    
-    
+    Entity::x = 10;
+    Entity::y = 20;
+
+    Entity::print();
+
     return 0;
 }
