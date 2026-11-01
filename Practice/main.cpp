@@ -66,7 +66,8 @@ void DLinkedList::add(DNode *v, const Elem &e) // insert new node berfore v
     u->elem = e;
     u->next = v;       //  link u in between v
     u->prev = v->prev; // ...add v->prev
-    v->prev->next = v->prev = u;
+    v->prev->next = u;
+    v->prev = u;
 }
 
 void DLinkedList::addFront(const Elem &e) // add to front of list
