@@ -1,73 +1,108 @@
 #include <iostream>
 #include <string>
 
-template <typename E>
-class SLinkedList;
-template <typename E>
-class SNode
+typedef std::string Elem; // list element type
+class DNode               // doubly linked list node
 {
 private:
-    E elem;
-    SNode<E> *next;
-    friend class SLinkedList<E>;
+    Elem elem;                // node element value
+    DNode *prev;              // previous node in list
+    DNode *next;              // next node in list
+    friend class DLinkedList; // allow DLinkList access
 };
 
-template <typename E>
-class SLinkedList
+class DLinkedList
 {
 public:
-    SLinkedList();
-    ~SLinkedList();
-    bool empty() const;
-    const E &front() const;
-    void addFront(const E &e);
-    void removeFront();
+    DLinkedList();                // constructor
+    ~DLinkedList();               // destructor
+    bool empty() const;           // is list empty ?
+    const Elem &back() const;     // get back element
+    const Elem &front() const;    // get front element
+    void addFront(const Elem &e); // add to front of list
+    void addBack(const Elem &e);  // add to back of list
+    void removeFront();           // remove from front
+    void removeBack();            // remove from back
 
 private:
-    SNode<E> *head;
+    DNode *header;
+    DNode *trailer;
+
+protected:                             // local utilites
+    void add(DNode *v, const Elem &e); // insert new node before v
+    void remove(DNode *v);             // remove node v
 };
 
-template <typename E>
-SLinkedList<E>::SLinkedList() : head(NULL) {} // constructor
-
-template <typename E>
-bool SLinkedList<E>::empty() const
+DLinkedList::DLinkedList() // construtor
 {
-    return head == NULL;
+    header = new DNode; // create sentinels
+    trailer = new DNode;
+    header->next = trailer; // have them point to each other
+    trailer->prev = header;
 }
-
-template <typename E>
-const E &SLinkedList<E>::front() const
-{
-    return head->elem;
-}
-
-template <typename E>
-SLinkedList<E>::~SLinkedList() // destructor
+DLinkedList::~DLinkedList() // destructor
 {
     while (!empty())
-        removeFront();
+        removeFront(); // remove all but sentinels
+    delete header;     // remove the sentinels
+    delete trailer;
 }
 
-template <typename E>
-void SLinkedList<E>::addFront(const E &e)
+bool DLinkedList::empty() const // is list empty?
 {
-    SNode<E> *v = new SNode<E>;
-    v->elem = e;
-    v->next = head;
-    head = v;
+    return (header->next == trailer);
 }
-template <typename E>
-void SLinkedList<E>::removeFront()
+const Elem &DLinkedList::front() const // get front element
 {
-    SNode<E> *old = head;
-    head = old->next;
-    delete old;
+    return header->next->elem;
 }
+const Elem &DLinkedList::back() const // get back element
+{
+    return trailer->prev->elem;
+}
+void DLinkedList::add(DNode *v, const Elem &e) // insert new node berfore v
+{
+    DNode *u = new DNode; // create a nwe node for e
+    u->elem = e;
+    u->next = v;       //  link u in between v
+    u->prev = v->prev; // ...add v->prev
+    v->prev->next = v->prev = u;
+}
+
+void DLinkedList::addFront(const Elem &e) // add to front of list
+{
+    add(header->next, e);
+}
+void DLinkedList::addBack(const Elem &e) // add to back of list
+{
+    add(trailer, e);
+}
+
+void DLinkedList::remove(DNode *v) // remove node v
+{
+    DNode *u = v->prev; // predecessor
+    DNode *w = v->next; // successor
+    u->next = w;        // unlink v from list
+    w->prev = u;
+    delete v;
+}
+void DLinkedList::removeFront() // remove from front
+{
+    remove(header->next);
+}
+void DLinkedList::removeBack() // remove from back
+{
+    remove(trailer->prev);
+}
+
 int main()
 {
-    SLinkedList<std::string> name;
-    name.addFront("Yuvraj");
-    std::cout << name.front() << "\n";
+    DLinkedList list;
+    list.addBack("Satinderpal Singh");
+    list.addFront("Yuvraj Singh");
+
+    std::cout << list.back() << "\n";
+    std::cout << list.front() << "\n";
+
     return 0;
 }
