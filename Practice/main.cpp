@@ -1,94 +1,64 @@
 #include <iostream>
 #include <string>
-#include <vector>
 
-const int X = 1, O = -1, EMPTY = 0;
-int board[3][3];
-int currentPlayer;
-
-void clearBoard()
+class StringNode // it's a class
 {
-    for (int i = 0; i < 3; i++)
-        for (int j = 0; j < 3; j++)
-            board[i][j] = EMPTY;
-    currentPlayer = X;
+private: // private variables
+    std::string elem;
+    StringNode *next;              // next is a pointer
+    friend class StringLinkedList; // this is a frined class
+};
+class StringLinkedList // this is a class
+{
+public: // public member functions , destructor and constructor
+    StringLinkedList();
+    ~StringLinkedList();
+    bool empty() const;
+    const std::string &front() const;
+    void addFront(const std::string &e);
+    void removeFront();
+
+private:
+    StringNode *head;
+};
+
+StringLinkedList::StringLinkedList() : head(NULL) {}
+
+StringLinkedList::~StringLinkedList()
+{
+    while (!empty())
+        removeFront();
 }
 
-void putMark(int i, int j)
+bool StringLinkedList::empty() const
 {
-    board[i][j] = currentPlayer;
-    currentPlayer = -currentPlayer;
+    return head == NULL;
 }
 
-bool isWin(int mark)
+const std::string &StringLinkedList::front() const
 {
-    int win = 3 * mark;
-    return (
-        (board[0][0] + board[0][1] + board[0][2] == win) ||
-        (board[1][0] + board[1][1] + board[1][2] == win) ||
-        (board[2][0] + board[2][1] + board[2][2] == win) ||
-        (board[0][0] + board[1][0] + board[2][0] == win) ||
-        (board[0][1] + board[1][1] + board[2][1] == win) ||
-        (board[0][2] + board[1][2] + board[2][2] == win) ||
-        (board[0][0] + board[1][1] + board[2][2] == win) ||
-        (board[2][0] + board[1][1] + board[0][2] == win)
-
-    );
+    return head->elem;
 }
 
-int getWinner()
+void StringLinkedList::addFront(const std::string &e)
 {
-    if (isWin(X))
-        return X;
-    else if (isWin(O))
-        return O;
-    else
-        return EMPTY;
+    StringNode *v = new StringNode;
+    v->elem = e;
+    v->next = head;
+    head = v;
 }
 
-void printBoard()
+void StringLinkedList::removeFront()
 {
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            switch (board[i][j])
-            {
-            case X:
-                std::cout << "X";
-                break;
-            case O:
-                std::cout << "O";
-                break;
-            case EMPTY:
-                std::cout << " ";
-                break;
-            }
-            if (j < 2)
-                std::cout << "|";
-        }
-        if (i < 2)
-            std::cout << "\n-+-+-\n";
-    }
+    StringNode *old = head;
+    head = old->next;
+    delete old;
 }
 int main()
 {
-    clearBoard();
-    putMark(0, 0);
-    putMark(0, 1);
-    putMark(2, 0);
-    putMark(2, 2);
-    putMark(1, 0);
-    putMark(1, 1);
-    putMark(0, 2);
-    putMark(1, 2);
-    putMark(2, 1);
+    StringLinkedList list;
+    list.addFront("Satinderpal Singh");
 
-    printBoard();
-    int winner = getWinner();
-    if (winner != EMPTY)
-        std::cout << " " << (winner == X ? 'X' : 'O') << " wins" << "\n";
-    else
-        std::cout << " Tie" << "\n";
+    std::cout << list.front() << "\n";
     return 0;
 }
