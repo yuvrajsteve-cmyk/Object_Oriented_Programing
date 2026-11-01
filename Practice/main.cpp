@@ -1,64 +1,73 @@
 #include <iostream>
 #include <string>
 
-class StringNode // it's a class
+template <typename E>
+class SLinkedList;
+template <typename E>
+class SNode
 {
-private: // private variables
-    std::string elem;
-    StringNode *next;              // next is a pointer
-    friend class StringLinkedList; // this is a frined class
+private:
+    E elem;
+    SNode<E> *next;
+    friend class SLinkedList<E>;
 };
-class StringLinkedList // this is a class
+
+template <typename E>
+class SLinkedList
 {
-public: // public member functions , destructor and constructor
-    StringLinkedList();
-    ~StringLinkedList();
+public:
+    SLinkedList();
+    ~SLinkedList();
     bool empty() const;
-    const std::string &front() const;
-    void addFront(const std::string &e);
+    const E &front() const;
+    void addFront(const E &e);
     void removeFront();
 
 private:
-    StringNode *head;
+    SNode<E> *head;
 };
 
-StringLinkedList::StringLinkedList() : head(NULL) {}
+template <typename E>
+SLinkedList<E>::SLinkedList() : head(NULL) {} // constructor
 
-StringLinkedList::~StringLinkedList()
+template <typename E>
+bool SLinkedList<E>::empty() const
+{
+    return head == NULL;
+}
+
+template <typename E>
+const E &SLinkedList<E>::front() const
+{
+    return head->elem;
+}
+
+template <typename E>
+SLinkedList<E>::~SLinkedList() // destructor
 {
     while (!empty())
         removeFront();
 }
 
-bool StringLinkedList::empty() const
+template <typename E>
+void SLinkedList<E>::addFront(const E &e)
 {
-    return head == NULL;
-}
-
-const std::string &StringLinkedList::front() const
-{
-    return head->elem;
-}
-
-void StringLinkedList::addFront(const std::string &e)
-{
-    StringNode *v = new StringNode;
+    SNode<E> *v = new SNode<E>;
     v->elem = e;
     v->next = head;
     head = v;
 }
-
-void StringLinkedList::removeFront()
+template <typename E>
+void SLinkedList<E>::removeFront()
 {
-    StringNode *old = head;
+    SNode<E> *old = head;
     head = old->next;
     delete old;
 }
 int main()
 {
-    StringLinkedList list;
-    list.addFront("Satinderpal Singh");
-
-    std::cout << list.front() << "\n";
+    SLinkedList<std::string> name;
+    name.addFront("Yuvraj");
+    std::cout << name.front() << "\n";
     return 0;
 }
